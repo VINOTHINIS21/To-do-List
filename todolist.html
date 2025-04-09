@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>To-do List</title>
+    <link rel="icon" type="image/png" href="4697260.png">
+
+
+    <style>
+      body {
+  background-color: rgb(62, 14, 107);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.header {
+  width: 320px;
+  background-color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+input {
+  height: 30px;
+  width: 190px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+button {
+  background-color: rgb(62, 14, 107);
+  color: white;
+  border: none;
+  height: 30px;
+  width: 60px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: rgb(50, 10, 90);
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+  text-align: left;
+}
+
+li {
+  background-color: #f2f2f2;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.remove:hover {
+  transform: scale(1.2);
+  color: red;
+}
+    </style>
+  </head>
+
+<body>
+
+  <div class="header">
+<input placeholder="Task to be done..." class="input">
+<button onclick="add()" class="button">Add</button>
+<ul class="task-list"></ul>
+</div>
+<script>
+  function add() {
+    const input = document.querySelector(".input");
+    const taskList = document.querySelector(".task-list");
+
+    // Create a new <li> element
+    const listItem = document.createElement("li");
+
+    // Add task text and remove button
+    listItem.innerHTML = `
+      ${input.value}
+      <button class="remove" onclick="removeTask(this)">🗑️</button>
+    `;
+
+    // Append the list item to the <ul>
+    taskList.appendChild(listItem);
+
+    // Clear the input box
+    input.value = "";
+  }
+
+  function removeTask(button) {
+    // Remove the <li> that contains this button
+    button.parentElement.remove();
+  }
+</script>
+
+</body>
+</html>
